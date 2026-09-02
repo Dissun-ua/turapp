@@ -1,0 +1,1239 @@
+/* ==========================================================================
+   UT.ut – Turistforeningen i Utopia
+   Prototype, studentoppgave ved USN. Kun HTML og CSS.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variabler
+   -------------------------------------------------------------------------- */
+
+:root {
+  --gronn-mork: #1d4630;
+  --gronn: #2f6b45;
+  --gronn-lys: #e6f0e8;
+  --gronn-kant: #c3ddcb;
+
+  --bla: #2b5f86;
+  --bla-lys: #e4eef6;
+  --rod: #a83a2c;
+  --rod-lys: #f8e7e4;
+  --gul: #c78a12;
+  --gul-lys: #fbf0d8;
+  --lilla: #5b4a8a;
+  --lilla-lys: #ece8f6;
+
+  --tekst: #1f2621;
+  --tekst-dempet: #5c6660;
+  --kant: #d9ded9;
+  --flate: #f5f7f4;
+  --hvit: #ffffff;
+
+  --radius: 12px;
+  --radius-liten: 8px;
+  --skygge: 0 1px 2px rgba(20, 40, 28, .06), 0 6px 18px rgba(20, 40, 28, .07);
+  --skygge-hev: 0 4px 8px rgba(20, 40, 28, .08), 0 14px 32px rgba(20, 40, 28, .12);
+
+  --bredde: 1180px;
+  --luft: clamp(1rem, 4vw, 2rem);
+}
+
+/* --------------------------------------------------------------------------
+   2. Grunnstiler
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--tekst);
+  background: var(--hvit);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0 0 .5rem;
+  color: var(--gronn-mork);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -.02em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.01em; }
+h3 { font-size: 1.2rem; }
+
+p { margin: 0 0 1rem; }
+
+ul, ol, dl { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+
+a {
+  color: var(--gronn);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover { color: var(--gronn-mork); }
+
+:focus-visible {
+  outline: 3px solid var(--bla);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+img { max-width: 100%; }
+
+.innhold {
+  width: 100%;
+  max-width: var(--bredde);
+  margin-inline: auto;
+  padding-inline: var(--luft);
+}
+
+.visuelt-skjult {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Studentbanner
+   -------------------------------------------------------------------------- */
+
+.studentbanner {
+  background: repeating-linear-gradient(
+    -45deg,
+    #26543a,
+    #26543a 14px,
+    #1d4630 14px,
+    #1d4630 28px
+  );
+  color: #fff;
+  text-align: center;
+}
+
+.studentbanner p {
+  margin: 0;
+  padding: .55rem var(--luft);
+  font-size: .85rem;
+  letter-spacing: .04em;
+}
+
+.studentbanner strong { text-transform: uppercase; }
+
+/* --------------------------------------------------------------------------
+   4. Header og navigasjon
+   -------------------------------------------------------------------------- */
+
+.toppheader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--kant);
+}
+
+.toppheader__rad {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+  padding-block: .8rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--gronn-mork);
+}
+
+.logo__merke {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 9px;
+  background:
+    linear-gradient(150deg, transparent 46%, var(--hvit) 46% 54%, transparent 54%),
+    linear-gradient(160deg, var(--gronn) 0%, var(--gronn-mork) 100%);
+}
+
+.logo__tekst {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+.logo__prikk { color: var(--gul); }
+
+.logo--lys { color: #fff; }
+.logo--lys .logo__tekst { color: #fff; }
+
+.hovednav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem .4rem;
+}
+
+.hovednav a {
+  display: block;
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  color: var(--tekst);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hovednav a:hover {
+  background: var(--gronn-lys);
+  color: var(--gronn-mork);
+}
+
+.hovednav .nav-knapp {
+  background: var(--gronn-mork);
+  color: #fff;
+}
+
+.hovednav .nav-knapp:hover {
+  background: var(--gronn);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   5. Knapper og skjemafelt
+   -------------------------------------------------------------------------- */
+
+.knapp {
+  display: inline-block;
+  padding: .75rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+.knapp:active { transform: translateY(1px); }
+
+.knapp--primar {
+  background: var(--gronn-mork);
+  color: #fff;
+}
+
+.knapp--primar:hover {
+  background: var(--gronn);
+  color: #fff;
+}
+
+.knapp--sekundar {
+  background: var(--hvit);
+  border-color: var(--gronn-mork);
+  color: var(--gronn-mork);
+}
+
+.knapp--sekundar:hover { background: var(--gronn-lys); }
+
+.knapp--tekst {
+  background: none;
+  color: var(--tekst-dempet);
+  padding-inline: .8rem;
+}
+
+.knapp--tekst:hover { color: var(--tekst); text-decoration: underline; }
+
+.knapp--bred { width: 100%; }
+
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(199, 138, 18, .16), transparent 45%),
+    linear-gradient(170deg, #ecf3ec 0%, #dceadf 60%, #cfe2d5 100%);
+  border-bottom: 1px solid var(--gronn-kant);
+}
+
+/* Dekorative "fjell" bakerst, tegnet med CSS. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 220px;
+  background:
+    linear-gradient(to top right, transparent 49.5%, rgba(47, 107, 69, .18) 50%),
+    linear-gradient(to top left, transparent 49.5%, rgba(29, 70, 48, .14) 50%);
+  background-size: 55% 100%, 65% 100%;
+  background-position: left bottom, right bottom;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.hero__innhold {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(2.5rem, 7vw, 5rem);
+  max-width: 780px;
+}
+
+.stikktittel {
+  margin-bottom: .4rem;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gronn);
+}
+
+.ingress {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: #3c4a41;
+  max-width: 60ch;
+}
+
+.ingress--liten { font-size: 1rem; }
+
+/* Søkefelt (kun visuelt) */
+.sok {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.75rem 0 1rem;
+  padding: .5rem;
+  background: var(--hvit);
+  border: 1px solid var(--gronn-kant);
+  border-radius: var(--radius);
+  box-shadow: var(--skygge);
+}
+
+.sok__felt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 260px;
+}
+
+.sok__felt--smal { flex: 1 1 180px; }
+
+.sok__ikon {
+  position: absolute;
+  left: .85rem;
+  font-size: 1.1rem;
+  color: var(--gronn);
+  pointer-events: none;
+}
+
+.sok input {
+  width: 100%;
+  padding: .8rem 1rem .8rem 2.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-liten);
+  background: var(--flate);
+}
+
+.sok input:hover { background: #eef2ec; }
+
+.sok input:focus {
+  background: var(--hvit);
+  border-color: var(--gronn);
+  outline: none;
+}
+
+.sok .knapp { flex: 0 0 auto; }
+
+.hurtiglenker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.25rem;
+  font-size: .95rem;
+}
+
+.hurtiglenker a { color: var(--gronn-mork); }
+
+.nokkeltall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gronn-kant);
+}
+
+.nokkeltall dt {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--tekst-dempet);
+}
+
+.nokkeltall dd {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gronn-mork);
+}
+
+/* --------------------------------------------------------------------------
+   7. Seksjoner
+   -------------------------------------------------------------------------- */
+
+.seksjon { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+
+.seksjon--flate {
+  background: var(--flate);
+  border-block: 1px solid var(--kant);
+}
+
+.seksjonshode { margin-bottom: 2rem; }
+
+.seksjonshode p {
+  margin: 0;
+  color: var(--tekst-dempet);
+}
+
+.seksjonshode--rad {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+}
+
+.lenke-pil {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lenke-pil::after {
+  content: " \2192";
+}
+
+/* --------------------------------------------------------------------------
+   8. Filtre
+   -------------------------------------------------------------------------- */
+
+.filtre {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: var(--hvit);
+  border: 1px solid var(--kant);
+  border-radius: var(--radius);
+  box-shadow: var(--skygge);
+}
+
+.filtergruppe {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filtergruppe legend {
+  padding: 0 0 .6rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--tekst-dempet);
+}
+
+.brikker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+/* Selve avkrysningsboksen skjules visuelt, men er fortsatt tastaturstyrt. */
+.brikke__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.brikke {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .5rem 1rem;
+  border: 1px solid var(--kant);
+  border-radius: 999px;
+  background: var(--hvit);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+.brikke:hover { border-color: var(--gronn); background: var(--gronn-lys); }
+
+.brikke::before {
+  content: "+";
+  font-weight: 700;
+  color: var(--tekst-dempet);
+}
+
+.brikke__input:checked + .brikke {
+  background: var(--gronn-mork);
+  border-color: var(--gronn-mork);
+  color: #fff;
+}
+
+.brikke__input:checked + .brikke::before {
+  content: "\2713";
+  color: #fff;
+}
+
+.brikke__input:focus-visible + .brikke {
+  outline: 3px solid var(--bla);
+  outline-offset: 2px;
+}
+
+/* Fargekoding av vanskelighetsgrad */
+.brikke--gronn { border-color: var(--gronn-kant); background: var(--gronn-lys); color: var(--gronn-mork); }
+.brikke--bla   { border-color: #bcd6e9; background: var(--bla-lys); color: var(--bla); }
+.brikke--rod   { border-color: #ecc6c0; background: var(--rod-lys); color: var(--rod); }
+.brikke--svart { border-color: #c9cec9; background: #eceeec; color: #2b302c; }
+
+.velgrad {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: .75rem;
+}
+
+.velg {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  flex: 1 1 200px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--tekst-dempet);
+}
+
+.velg select {
+  padding: .7rem .8rem;
+  border: 1px solid var(--kant);
+  border-radius: var(--radius-liten);
+  background: var(--hvit);
+  font-weight: 400;
+  color: var(--tekst);
+}
+
+.filtergruppe--velg { border-top: 1px solid var(--kant); padding-top: 1.25rem; }
+
+/* --------------------------------------------------------------------------
+   9. Kort (turruter og hytter)
+   -------------------------------------------------------------------------- */
+
+.kortgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.kortgrid--tre { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+
+.kort {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--hvit);
+  border: 1px solid var(--kant);
+  border-radius: var(--radius);
+  box-shadow: var(--skygge);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.kort:hover {
+  box-shadow: var(--skygge-hev);
+  transform: translateY(-3px);
+}
+
+/* Plassholderbokser i stedet for bilder – tegnet med CSS. */
+.kort__bilde {
+  position: relative;
+  height: 150px;
+  background: #cfd8d2;
+}
+
+.kort__bilde--fjell {
+  background:
+    linear-gradient(to top right, transparent 49.5%, #f4f7f8 50%) no-repeat left bottom / 60% 70%,
+    linear-gradient(to top left, transparent 49.5%, #e2eaee 50%) no-repeat right bottom / 55% 55%,
+    linear-gradient(180deg, #7fa6c4 0%, #a9c6d8 100%);
+}
+
+.kort__bilde--skog {
+  background:
+    radial-gradient(circle at 20% 100%, #2f6b45 0 22%, transparent 23%),
+    radial-gradient(circle at 50% 110%, #3e8055 0 26%, transparent 27%),
+    radial-gradient(circle at 80% 100%, #24583a 0 20%, transparent 21%),
+    linear-gradient(180deg, #cfe3d3 0%, #a9cdb4 100%);
+}
+
+.kort__bilde--vidde {
+  background:
+    linear-gradient(180deg, transparent 55%, #b98f4d 55% 62%, transparent 62%),
+    linear-gradient(180deg, #cfe0ea 0%, #dfe7d4 45%, #b9c98f 100%);
+}
+
+.kort__bilde--vinter {
+  background:
+    radial-gradient(circle at 25% 30%, #fff 0 6px, transparent 7px),
+    radial-gradient(circle at 65% 55%, #fff 0 5px, transparent 6px),
+    radial-gradient(circle at 45% 75%, #fff 0 4px, transparent 5px),
+    linear-gradient(180deg, #93b3cc 0%, #cddfe9 100%);
+}
+
+.kort__bilde--hytte-rod {
+  background:
+    linear-gradient(to top right, transparent 49%, #a83a2c 50%) no-repeat 30% bottom / 40% 55%,
+    linear-gradient(to top left, transparent 49%, #8f2f23 50%) no-repeat 70% bottom / 40% 55%,
+    linear-gradient(180deg, #dfeae2 0%, #b6ceba 100%);
+}
+
+.kort__bilde--hytte-brun {
+  background:
+    linear-gradient(to top right, transparent 49%, #7a5a34 50%) no-repeat 30% bottom / 40% 50%,
+    linear-gradient(to top left, transparent 49%, #64492a 50%) no-repeat 70% bottom / 40% 50%,
+    linear-gradient(180deg, #e6ecdc 0%, #c2cfae 100%);
+}
+
+.kort__bilde--hytte-gra {
+  background:
+    linear-gradient(to top right, transparent 49%, #6f7671 50%) no-repeat 30% bottom / 40% 45%,
+    linear-gradient(to top left, transparent 49%, #5b625d 50%) no-repeat 70% bottom / 40% 45%,
+    linear-gradient(180deg, #e4e8e5 0%, #c2c9c4 100%);
+}
+
+.merkelapp {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  background: var(--hvit);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.merkelapp--gronn { background: var(--gronn-mork); color: #fff; }
+.merkelapp--bla   { background: var(--bla); color: #fff; }
+.merkelapp--gul   { background: var(--gul); color: #2b230d; }
+.merkelapp--lilla { background: var(--lilla); color: #fff; }
+.merkelapp--gra   { background: #55605a; color: #fff; }
+
+.kort__tekst {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.kort__stikktittel {
+  margin: 0 0 .25rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--tekst-dempet);
+}
+
+.kort__beskrivelse {
+  color: var(--tekst-dempet);
+  font-size: .95rem;
+}
+
+/* Faktalinjer */
+.fakta {
+  display: grid;
+  gap: .3rem;
+  margin: 0 0 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--kant);
+  font-size: .9rem;
+}
+
+.fakta li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.fakta--linje li { justify-content: flex-start; gap: .6rem; }
+
+.fakta__navn { color: var(--tekst-dempet); }
+.fakta__verdi { font-weight: 600; }
+
+/* Vanskelighetsgrad */
+.grad {
+  align-self: flex-start;
+  margin: 0 0 .6rem;
+  padding: .2rem .7rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.grad--enkel    { background: var(--gronn-lys); color: var(--gronn-mork); }
+.grad--middels  { background: var(--bla-lys); color: var(--bla); }
+.grad--krevende { background: var(--rod-lys); color: var(--rod); }
+.grad--ekspert  { background: #eceeec; color: #2b302c; }
+
+/* Stjernevurdering */
+.stjerner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+  margin: auto 0 0;
+  padding-top: .5rem;
+  font-size: .9rem;
+}
+
+.stjerner__symbol {
+  color: var(--gul);
+  font-size: 1.05rem;
+  letter-spacing: .05em;
+}
+
+.stjerner__tall { font-weight: 700; }
+.stjerner__antall { color: var(--tekst-dempet); font-size: .85rem; }
+
+/* Prisnivå: aktive "kr" er mørke, resten er dempet. */
+.pris {
+  color: #b9c0ba;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.pris__aktiv { color: var(--gronn-mork); }
+
+/* Fasiliteter */
+.fasiliteter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .75rem;
+}
+
+.fasiliteter li {
+  padding: .2rem .6rem;
+  border: 1px solid var(--kant);
+  border-radius: var(--radius-liten);
+  background: var(--flate);
+  font-size: .8rem;
+  color: var(--tekst-dempet);
+}
+
+/* --------------------------------------------------------------------------
+   10. Fellesturer
+   -------------------------------------------------------------------------- */
+
+.tegnforklaring {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: .9rem;
+}
+
+.tegn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-weight: 600;
+}
+
+.tegn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.tegn--fast::before { background: var(--gronn-mork); }
+
+.tegn--fleksibel::before {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gul) 0 4px,
+    #fff 4px 8px
+  );
+  border: 1px solid var(--gul);
+}
+
+.turliste {
+  display: grid;
+  gap: 1rem;
+}
+
+.tur {
+  display: grid;
+  grid-template-columns: 92px 1fr 220px;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem;
+  background: var(--hvit);
+  border: 1px solid var(--kant);
+  border-radius: var(--radius);
+  box-shadow: var(--skygge);
+}
+
+/* Turer med fast startdato: heldekkende grønn kantstripe. */
+.tur--fast { border-left: 6px solid var(--gronn-mork); }
+
+/* Turer med fleksibel startdato: stripet gul kantstripe og lys bakgrunn. */
+.tur--fleksibel {
+  position: relative;
+  border-left: 6px solid var(--gul);
+  background: linear-gradient(90deg, var(--gul-lys) 0%, var(--hvit) 30%);
+}
+
+/* Stripene tegnes oppå kantstripen, slik at den skiller seg fra den heltrukne. */
+.tur--fleksibel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -6px;
+  width: 6px;
+  border-radius: var(--radius) 0 0 var(--radius);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gul) 0 6px,
+    #f7e2a8 6px 12px
+  );
+}
+
+.tur__dato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: .6rem;
+  border-radius: var(--radius-liten);
+  background: var(--gronn-mork);
+  color: #fff;
+  text-align: center;
+}
+
+.tur__dag {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tur__mnd {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* Fleksibel dato markeres med stiplet, "uferdig" boks. */
+.tur__dato--fleksibel {
+  background: var(--gul-lys);
+  color: #6b4a08;
+  border: 2px dashed var(--gul);
+}
+
+.tur__dato--fleksibel .tur__dag { font-size: 1.15rem; }
+
+.tur__type {
+  margin: 0 0 .2rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--tekst-dempet);
+}
+
+.tur--fleksibel .tur__type { color: #8a6512; }
+
+.tur__beskrivelse {
+  color: var(--tekst-dempet);
+  font-size: .95rem;
+}
+
+.tur__innhold .fakta { margin-bottom: 0; }
+
+.tur__handling {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.plasser {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.plasser--fullt { color: var(--rod); }
+
+.stolpe {
+  margin: 0;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--kant);
+  overflow: hidden;
+}
+
+.stolpe__fyll {
+  display: block;
+  height: 100%;
+  background: var(--gronn);
+}
+
+.stolpe__fyll--stripet {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gul) 0 5px,
+    #e8c15f 5px 10px
+  );
+}
+
+.stolpe__fyll--45  { width: 45%; }
+.stolpe__fyll--65  { width: 65%; }
+.stolpe__fyll--70  { width: 70%; }
+.stolpe__fyll--100 { width: 100%; }
+
+/* --------------------------------------------------------------------------
+   11. Kart
+   -------------------------------------------------------------------------- */
+
+.kart__oppsett {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.punktliste {
+  display: grid;
+  gap: .4rem;
+  margin-bottom: 1.5rem;
+}
+
+.punktliste li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.punktliste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gronn);
+}
+
+.kartboks {
+  position: relative;
+  min-height: 320px;
+  border: 1px solid var(--gronn-kant);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(47, 107, 69, .10) 1px, transparent 1px) 0 0 / 100% 34px,
+    linear-gradient(90deg, rgba(47, 107, 69, .10) 1px, transparent 1px) 0 0 / 34px 100%,
+    radial-gradient(circle at 70% 65%, #bcd9e6 0 16%, transparent 17%),
+    radial-gradient(circle at 25% 30%, #d7e6c9 0 22%, transparent 23%),
+    linear-gradient(160deg, #eef4ea 0%, #e2eee4 100%);
+  box-shadow: var(--skygge);
+}
+
+.kart__linje {
+  position: absolute;
+  left: 12%;
+  top: 22%;
+  width: 62%;
+  height: 46%;
+  border-left: 3px dashed var(--rod);
+  border-bottom: 3px dashed var(--rod);
+  border-bottom-left-radius: 60px;
+  transform: rotate(-6deg);
+}
+
+.kart__punkt {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+
+.kart__punkt--start { left: 10%; top: 20%; background: var(--gronn-mork); }
+.kart__punkt--hytte { left: 44%; top: 62%; background: var(--rod); }
+.kart__punkt--topp  { left: 72%; top: 30%; background: var(--bla); }
+
+.kart__etikett {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  padding: .3rem .8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .9);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--gronn-mork);
+}
+
+/* --------------------------------------------------------------------------
+   12. Logg inn
+   -------------------------------------------------------------------------- */
+
+.oppfordring {
+  background: linear-gradient(160deg, var(--gronn-mork) 0%, #235238 100%);
+  color: #e9f2ec;
+}
+
+.oppfordring h2 { color: #fff; }
+
+.oppfordring p { color: #cfe0d5; max-width: 48ch; }
+
+.oppfordring__innhold {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 380px);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.innlogging {
+  display: grid;
+  gap: .75rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--hvit);
+  border-radius: var(--radius);
+  box-shadow: var(--skygge-hev);
+}
+
+.felt {
+  display: grid;
+  gap: .3rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--tekst-dempet);
+}
+
+.felt input {
+  padding: .75rem .9rem;
+  border: 1px solid var(--kant);
+  border-radius: var(--radius-liten);
+  background: var(--flate);
+  font-weight: 400;
+}
+
+.felt input:focus {
+  background: var(--hvit);
+  border-color: var(--gronn);
+  outline: none;
+}
+
+.innlogging__hjelp {
+  margin: 0;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--tekst-dempet);
+}
+
+/* --------------------------------------------------------------------------
+   13. Footer
+   -------------------------------------------------------------------------- */
+
+.bunn {
+  background: #17301f;
+  color: #c3d3c8;
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) 1.5rem;
+}
+
+.bunn__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 2rem;
+}
+
+.bunn h2 {
+  margin-bottom: .75rem;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #8fb59c;
+}
+
+.bunn p { font-size: .92rem; }
+
+.bunn a { color: #dfe9e2; }
+
+.bunn a:hover { color: #fff; }
+
+.bunn__merke .logo { margin-bottom: .75rem; }
+
+.bunn__kolonne ul { display: grid; gap: .4rem; font-size: .95rem; }
+
+.bunn address {
+  font-style: normal;
+  font-size: .95rem;
+  line-height: 1.9;
+}
+
+.bunn__linje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  font-size: .85rem;
+}
+
+.bunn__linje p { margin: 0; }
+
+.bunn__smalenker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsivt: nettbrett
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .kart__oppsett,
+  .oppfordring__innhold {
+    grid-template-columns: 1fr;
+  }
+
+  .tur {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .tur__handling {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1rem;
+    padding-top: .5rem;
+    border-top: 1px solid var(--kant);
+  }
+
+  .tur__handling .stolpe { flex: 1 1 120px; }
+  .tur__handling .knapp { flex: 0 0 auto; }
+
+  .bunn__grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   15. Responsivt: mobil
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 620px) {
+
+  .toppheader { position: static; }
+
+  .toppheader__rad {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+  }
+
+  .hovednav ul {
+    justify-content: space-between;
+    gap: .25rem;
+  }
+
+  .hovednav a {
+    padding: .45rem .6rem;
+    font-size: .92rem;
+  }
+
+  .sok { flex-direction: column; }
+  .sok .knapp { width: 100%; }
+
+  .nokkeltall { grid-template-columns: 1fr 1fr; }
+
+  .seksjonshode--rad { align-items: flex-start; }
+
+  .tur {
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+
+  .tur__dato {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: .5rem;
+    align-items: baseline;
+    width: max-content;
+    padding: .35rem .8rem;
+  }
+
+  .tur__dag { font-size: 1.2rem; }
+
+  .tur__handling { flex-direction: column; align-items: stretch; }
+  .tur__handling .knapp { width: 100%; }
+
+  .bunn__grid { grid-template-columns: 1fr; gap: 1.75rem; }
+
+  .bunn__linje { flex-direction: column; align-items: flex-start; }
+}
+
+/* --------------------------------------------------------------------------
+   16. Utskrift og redusert bevegelse
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .toppheader,
+  .sok,
+  .filtre,
+  .oppfordring { display: none; }
+
+  body { color: #000; background: #fff; }
+  .kort, .tur { box-shadow: none; break-inside: avoid; }
+}

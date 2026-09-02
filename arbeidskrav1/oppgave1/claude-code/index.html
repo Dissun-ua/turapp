@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UT.ut – Turer, hytter og fellesturer i Utopia</title>
+  <meta name="description" content="UT.ut er nettstedet til Turistforeningen i Utopia (TiU) med turruter, turmål, hytter og fellesturer.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Banner helt øverst -->
+  <div class="studentbanner">
+    <p><strong>Studentoppgave ved USN</strong> – dette er en prototype uten funksjonalitet.</p>
+  </div>
+
+  <header class="toppheader">
+    <div class="innhold toppheader__rad">
+      <a class="logo" href="#hero" aria-label="UT.ut – til forsiden">
+        <span class="logo__merke" aria-hidden="true"></span>
+        <span class="logo__tekst">UT<span class="logo__prikk">.</span>ut</span>
+      </a>
+
+      <nav class="hovednav" aria-label="Hovedmeny">
+        <ul>
+          <li><a href="#turer">Turer</a></li>
+          <li><a href="#hytter">Hytter</a></li>
+          <li><a href="#fellesturer">Fellesturer</a></li>
+          <li><a href="#kart">Kart</a></li>
+          <li><a class="nav-knapp" href="#logg-inn">Logg inn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero med søkefelt -->
+    <section class="hero" id="hero">
+      <div class="innhold hero__innhold">
+        <p class="stikktittel">Turistforeningen i Utopia</p>
+        <h1>Finn din neste tur i Utopia</h1>
+        <p class="ingress">
+          Over 4 000 merkede turruter, 380 hytter og hundrevis av fellesturer –
+          fra korte kveldsturer i nærmiljøet til lange fjellovergangar mellom
+          betjente hytter. Planlegg alene, eller bli med noen på veien.
+        </p>
+
+        <form class="sok" role="search" aria-label="Søk etter turer, hytter og turmål">
+          <label class="sok__felt">
+            <span class="visuelt-skjult">Søk etter tur, hytte eller sted</span>
+            <span class="sok__ikon" aria-hidden="true">&#9906;</span>
+            <input type="search" name="q" placeholder="Søk etter tur, hytte eller sted …">
+          </label>
+          <label class="sok__felt sok__felt--smal">
+            <span class="visuelt-skjult">Område</span>
+            <span class="sok__ikon" aria-hidden="true">&#9678;</span>
+            <input type="text" name="omrade" placeholder="Område, f.eks. Vestfjella">
+          </label>
+          <button class="knapp knapp--primar" type="button">Søk</button>
+        </form>
+
+        <ul class="hurtiglenker">
+          <li><a href="#turer">Dagsturer nær deg</a></li>
+          <li><a href="#hytter">Ledige hytter i helga</a></li>
+          <li><a href="#fellesturer">Turer for nybegynnere</a></li>
+        </ul>
+
+        <dl class="nokkeltall">
+          <div><dt>Turruter</dt><dd>4 120</dd></div>
+          <div><dt>Hytter</dt><dd>380</dd></div>
+          <div><dt>Fellesturer i år</dt><dd>1 260</dd></div>
+          <div><dt>Medlemmer</dt><dd>92 000</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Filtre -->
+    <section class="seksjon seksjon--flate" id="filtre" aria-labelledby="filtre-tittel">
+      <div class="innhold">
+        <header class="seksjonshode">
+          <h2 id="filtre-tittel">Hva slags tur har du lyst på?</h2>
+          <p>Kombiner filtrene for å snevre inn blant turrutene i Utopia.</p>
+        </header>
+
+        <form class="filtre">
+          <fieldset class="filtergruppe">
+            <legend>Vanskelighetsgrad</legend>
+            <div class="brikker">
+              <input type="checkbox" id="f-enkel" class="brikke__input">
+              <label class="brikke brikke--gronn" for="f-enkel">Enkel</label>
+
+              <input type="checkbox" id="f-middels" class="brikke__input">
+              <label class="brikke brikke--bla" for="f-middels">Middels</label>
+
+              <input type="checkbox" id="f-krevende" class="brikke__input">
+              <label class="brikke brikke--rod" for="f-krevende">Krevende</label>
+
+              <input type="checkbox" id="f-ekspert" class="brikke__input">
+              <label class="brikke brikke--svart" for="f-ekspert">Ekspert</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="filtergruppe">
+            <legend>Varighet</legend>
+            <div class="brikker">
+              <input type="checkbox" id="v-under2" class="brikke__input">
+              <label class="brikke" for="v-under2">Under 2 timer</label>
+
+              <input type="checkbox" id="v-2-5" class="brikke__input">
+              <label class="brikke" for="v-2-5">2–5 timer</label>
+
+              <input type="checkbox" id="v-dagstur" class="brikke__input">
+              <label class="brikke" for="v-dagstur">Dagstur</label>
+
+              <input type="checkbox" id="v-flere" class="brikke__input">
+              <label class="brikke" for="v-flere">Flere dager</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="filtergruppe">
+            <legend>Turtype</legend>
+            <div class="brikker">
+              <input type="checkbox" id="t-fottur" class="brikke__input">
+              <label class="brikke" for="t-fottur">Fottur</label>
+
+              <input type="checkbox" id="t-sykkel" class="brikke__input">
+              <label class="brikke" for="t-sykkel">Sykkeltur</label>
+
+              <input type="checkbox" id="t-ski" class="brikke__input">
+              <label class="brikke" for="t-ski">Skitur</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="filtergruppe filtergruppe--velg">
+            <legend>Sortering og område</legend>
+            <div class="velgrad">
+              <label class="velg">
+                <span>Sorter etter</span>
+                <select name="sortering">
+                  <option>Mest populære</option>
+                  <option>Høyest vurdert</option>
+                  <option>Kortest først</option>
+                  <option>Nærmest meg</option>
+                </select>
+              </label>
+              <label class="velg">
+                <span>Landsdel</span>
+                <select name="landsdel">
+                  <option>Hele Utopia</option>
+                  <option>Nordlandet</option>
+                  <option>Vestfjella</option>
+                  <option>Østmarka</option>
+                  <option>Sørkysten</option>
+                </select>
+              </label>
+              <button class="knapp knapp--primar" type="button">Vis 218 turer</button>
+              <button class="knapp knapp--tekst" type="reset">Nullstill</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <!-- Populære turruter -->
+    <section class="seksjon" id="turer" aria-labelledby="turer-tittel">
+      <div class="innhold">
+        <header class="seksjonshode seksjonshode--rad">
+          <div>
+            <h2 id="turer-tittel">Populære turruter</h2>
+            <p>Turrutene medlemmene våre går mest om dagen.</p>
+          </div>
+          <a class="lenke-pil" href="#turer">Se alle turruter</a>
+        </header>
+
+        <ul class="kortgrid">
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--fjell" aria-hidden="true">
+              <span class="merkelapp merkelapp--gul">Klassiker</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Fottur · Vestfjella</p>
+              <h3>Utopiatinden rundt</h3>
+              <p class="kort__beskrivelse">
+                Luftig rundtur over tregrensa, med utsikt til Storfjorden hele veien.
+              </p>
+              <ul class="fakta">
+                <li><span class="fakta__navn">Lengde</span><span class="fakta__verdi">14,2 km</span></li>
+                <li><span class="fakta__navn">Stigning</span><span class="fakta__verdi">860 m</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">6–7 t</span></li>
+              </ul>
+              <p class="grad grad--krevende">Krevende</p>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★☆</span>
+                <span class="stjerner__tall">4,4</span>
+                <span class="stjerner__antall">(312 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--skog" aria-hidden="true">
+              <span class="merkelapp merkelapp--gronn">Barnevennlig</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Fottur · Østmarka</p>
+              <h3>Bjørkelia naturstig</h3>
+              <p class="kort__beskrivelse">
+                Kort og flat rundtur på god sti, med gapahuk og bålplass ved vannet.
+              </p>
+              <ul class="fakta">
+                <li><span class="fakta__navn">Lengde</span><span class="fakta__verdi">3,6 km</span></li>
+                <li><span class="fakta__navn">Stigning</span><span class="fakta__verdi">45 m</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">1–2 t</span></li>
+              </ul>
+              <p class="grad grad--enkel">Enkel</p>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★★</span>
+                <span class="stjerner__tall">4,8</span>
+                <span class="stjerner__antall">(198 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--vidde" aria-hidden="true">
+              <span class="merkelapp merkelapp--bla">Sykkel</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Sykkeltur · Nordlandet</p>
+              <h3>Grusveien over Storvidda</h3>
+              <p class="kort__beskrivelse">
+                Rolig grusrute mellom to hytter – fin som overnattingstur på sykkel.
+              </p>
+              <ul class="fakta">
+                <li><span class="fakta__navn">Lengde</span><span class="fakta__verdi">38 km</span></li>
+                <li><span class="fakta__navn">Stigning</span><span class="fakta__verdi">410 m</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">4–5 t</span></li>
+              </ul>
+              <p class="grad grad--middels">Middels</p>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★☆</span>
+                <span class="stjerner__tall">4,1</span>
+                <span class="stjerner__antall">(87 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--vinter" aria-hidden="true">
+              <span class="merkelapp merkelapp--lilla">Vinter</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Skitur · Sørkysten</p>
+              <h3>Kvitmyra skiløype</h3>
+              <p class="kort__beskrivelse">
+                Preparert løype gjennom furuskogen, med kafé på snuplassen.
+              </p>
+              <ul class="fakta">
+                <li><span class="fakta__navn">Lengde</span><span class="fakta__verdi">9,5 km</span></li>
+                <li><span class="fakta__navn">Stigning</span><span class="fakta__verdi">180 m</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">2–3 t</span></li>
+              </ul>
+              <p class="grad grad--enkel">Enkel</p>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★☆</span>
+                <span class="stjerner__tall">4,3</span>
+                <span class="stjerner__antall">(141 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Hytter -->
+    <section class="seksjon seksjon--flate" id="hytter" aria-labelledby="hytter-tittel">
+      <div class="innhold">
+        <header class="seksjonshode seksjonshode--rad">
+          <div>
+            <h2 id="hytter-tittel">Hytter i Utopia</h2>
+            <p>Betjente, selvbetjente og ubetjente hytter – alle med TiU-standard.</p>
+          </div>
+          <a class="lenke-pil" href="#hytter">Se alle 380 hytter</a>
+        </header>
+
+        <ul class="kortgrid kortgrid--tre">
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--hytte-rod" aria-hidden="true">
+              <span class="merkelapp merkelapp--gronn">Betjent</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Vestfjella · 1 240 moh.</p>
+              <h3>Storfjordbu</h3>
+              <p class="kort__beskrivelse">
+                Stor turisthytte med kjøkkenpersonale, tre retters middag og 92 senger.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Drift</span><span class="fakta__verdi">Betjent hele sesongen</span></li>
+                <li>
+                  <span class="fakta__navn">Prisnivå</span>
+                  <span class="fakta__verdi">
+                    <span class="pris"><span class="pris__aktiv">kr kr kr</span></span>
+                    Fra 690,–
+                  </span>
+                </li>
+                <li><span class="fakta__navn">Senger</span><span class="fakta__verdi">92</span></li>
+              </ul>
+              <ul class="fasiliteter">
+                <li>Servering</li>
+                <li>Dusj</li>
+                <li>Strøm</li>
+                <li>Kortbetaling</li>
+                <li>Tørkerom</li>
+              </ul>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★★</span>
+                <span class="stjerner__tall">4,7</span>
+                <span class="stjerner__antall">(524 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--hytte-brun" aria-hidden="true">
+              <span class="merkelapp merkelapp--bla">Selvbetjent</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Nordlandet · 870 moh.</p>
+              <h3>Furuheim</h3>
+              <p class="kort__beskrivelse">
+                Selvbetjent hytte med velfylt matbod. Du lager maten selv og fører opp i boka.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Drift</span><span class="fakta__verdi">Selvbetjent, med nøkkel</span></li>
+                <li>
+                  <span class="fakta__navn">Prisnivå</span>
+                  <span class="fakta__verdi">
+                    <span class="pris"><span class="pris__aktiv">kr kr</span> kr</span>
+                    Fra 350,–
+                  </span>
+                </li>
+                <li><span class="fakta__navn">Senger</span><span class="fakta__verdi">28</span></li>
+              </ul>
+              <ul class="fasiliteter">
+                <li>Matbod</li>
+                <li>Vedovn</li>
+                <li>Gasskomfyr</li>
+                <li>Utedo</li>
+              </ul>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★★☆</span>
+                <span class="stjerner__tall">4,5</span>
+                <span class="stjerner__antall">(213 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="kort">
+            <div class="kort__bilde kort__bilde--hytte-gra" aria-hidden="true">
+              <span class="merkelapp merkelapp--gra">Ubetjent</span>
+            </div>
+            <div class="kort__tekst">
+              <p class="kort__stikktittel">Østmarka · 410 moh.</p>
+              <h3>Steinbu</h3>
+              <p class="kort__beskrivelse">
+                Enkel ubetjent koie for deg som bærer med egen mat. Ingen booking, alltid åpen.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Drift</span><span class="fakta__verdi">Ubetjent, ingen booking</span></li>
+                <li>
+                  <span class="fakta__navn">Prisnivå</span>
+                  <span class="fakta__verdi">
+                    <span class="pris"><span class="pris__aktiv">kr</span> kr kr</span>
+                    Fra 180,–
+                  </span>
+                </li>
+                <li><span class="fakta__navn">Senger</span><span class="fakta__verdi">8</span></li>
+              </ul>
+              <ul class="fasiliteter">
+                <li>Vedovn</li>
+                <li>Brønn</li>
+                <li>Utedo</li>
+              </ul>
+              <p class="stjerner">
+                <span class="stjerner__symbol" aria-hidden="true">★★★☆☆</span>
+                <span class="stjerner__tall">3,9</span>
+                <span class="stjerner__antall">(64 vurderinger)</span>
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fellesturer -->
+    <section class="seksjon" id="fellesturer" aria-labelledby="fellesturer-tittel">
+      <div class="innhold">
+        <header class="seksjonshode seksjonshode--rad">
+          <div>
+            <h2 id="fellesturer-tittel">Kommende fellesturer</h2>
+            <p>Meld deg på en tur med fast dato, eller bli med i en gruppe som ennå ikke har bestemt seg.</p>
+          </div>
+          <a class="lenke-pil" href="#fellesturer">Se hele turkalenderen</a>
+        </header>
+
+        <p class="tegnforklaring">
+          <span class="tegn tegn--fast">Fast startdato</span>
+          <span class="tegn tegn--fleksibel">Fleksibel startdato</span>
+        </p>
+
+        <ul class="turliste">
+
+          <li class="tur tur--fast">
+            <div class="tur__dato">
+              <span class="tur__dag">14</span>
+              <span class="tur__mnd">sep</span>
+            </div>
+            <div class="tur__innhold">
+              <p class="tur__type">Fast startdato · Fottur</p>
+              <h3>Nybegynnertur til Utopiatinden</h3>
+              <p class="tur__beskrivelse">
+                Rolig tempo med to turledere. Vi går samlet fra parkeringa klokka 09.00 og er tilbake til middag.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Oppmøte</span><span class="fakta__verdi">Lør. 14. sep., kl. 09.00</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">1 dag</span></li>
+                <li><span class="fakta__navn">Pris</span><span class="fakta__verdi">250,– for medlemmer</span></li>
+              </ul>
+            </div>
+            <div class="tur__handling">
+              <p class="plasser">7 av 20 plasser igjen</p>
+              <p class="stolpe" aria-hidden="true"><span class="stolpe__fyll stolpe__fyll--65"></span></p>
+              <a class="knapp knapp--primar" href="#logg-inn">Meld deg på</a>
+            </div>
+          </li>
+
+          <li class="tur tur--fleksibel">
+            <div class="tur__dato tur__dato--fleksibel">
+              <span class="tur__dag">okt</span>
+              <span class="tur__mnd">fleksibel</span>
+            </div>
+            <div class="tur__innhold">
+              <p class="tur__type">Fleksibel startdato · Sykkeltur</p>
+              <h3>Storvidda på to hjul</h3>
+              <p class="tur__beskrivelse">
+                Gruppa blir enig om dato når vi er nok folk. Foreslå en helg som passer deg, så teller vi stemmer.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Tidsrom</span><span class="fakta__verdi">En helg i oktober</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">2 dager</span></li>
+                <li><span class="fakta__navn">Forslag som leder</span><span class="fakta__verdi">4.–5. oktober</span></li>
+              </ul>
+            </div>
+            <div class="tur__handling">
+              <p class="plasser">9 interesserte så langt</p>
+              <p class="stolpe" aria-hidden="true"><span class="stolpe__fyll stolpe__fyll--stripet stolpe__fyll--45"></span></p>
+              <a class="knapp knapp--sekundar" href="#logg-inn">Vis interesse</a>
+            </div>
+          </li>
+
+          <li class="tur tur--fast">
+            <div class="tur__dato">
+              <span class="tur__dag">28</span>
+              <span class="tur__mnd">sep</span>
+            </div>
+            <div class="tur__innhold">
+              <p class="tur__type">Fast startdato · Hyttetur</p>
+              <h3>Helg på Furuheim</h3>
+              <p class="tur__beskrivelse">
+                To netter på selvbetjent hytte. Vi deler på matlaging og går en dagstur på lørdagen.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Oppmøte</span><span class="fakta__verdi">Fre. 28. sep., kl. 16.30</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">3 dager</span></li>
+                <li><span class="fakta__navn">Pris</span><span class="fakta__verdi">890,– for medlemmer</span></li>
+              </ul>
+            </div>
+            <div class="tur__handling">
+              <p class="plasser plasser--fullt">Fullt – 3 på venteliste</p>
+              <p class="stolpe" aria-hidden="true"><span class="stolpe__fyll stolpe__fyll--100"></span></p>
+              <a class="knapp knapp--sekundar" href="#logg-inn">Sett deg på venteliste</a>
+            </div>
+          </li>
+
+          <li class="tur tur--fleksibel">
+            <div class="tur__dato tur__dato--fleksibel">
+              <span class="tur__dag">vinter</span>
+              <span class="tur__mnd">fleksibel</span>
+            </div>
+            <div class="tur__innhold">
+              <p class="tur__type">Fleksibel startdato · Skitur</p>
+              <h3>Kvitmyra når snøen kommer</h3>
+              <p class="tur__beskrivelse">
+                Turen starter første helga med skiføre. Alle påmeldte får beskjed så snart løypa er kjørt opp.
+              </p>
+              <ul class="fakta fakta--linje">
+                <li><span class="fakta__navn">Tidsrom</span><span class="fakta__verdi">Des.–feb., væravhengig</span></li>
+                <li><span class="fakta__navn">Varighet</span><span class="fakta__verdi">1 dag</span></li>
+                <li><span class="fakta__navn">Varsel</span><span class="fakta__verdi">Minst 3 dager før</span></li>
+              </ul>
+            </div>
+            <div class="tur__handling">
+              <p class="plasser">14 interesserte så langt</p>
+              <p class="stolpe" aria-hidden="true"><span class="stolpe__fyll stolpe__fyll--stripet stolpe__fyll--70"></span></p>
+              <a class="knapp knapp--sekundar" href="#logg-inn">Vis interesse</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- Kart -->
+    <section class="seksjon seksjon--flate" id="kart" aria-labelledby="kart-tittel">
+      <div class="innhold kart__oppsett">
+        <div>
+          <h2 id="kart-tittel">Alt sammen på kartet</h2>
+          <p class="ingress ingress--liten">
+            Se turruter, hytter og fellesturer i samme kart. Slå lagene av og på,
+            og legg turen rett inn i din egen turplan.
+          </p>
+          <ul class="punktliste">
+            <li>Merkede sommer- og vinterruter</li>
+            <li>Hytter med drift og prisnivå</li>
+            <li>Fellesturer med og uten fast dato</li>
+            <li>Offline-kart for medlemmer</li>
+          </ul>
+          <a class="knapp knapp--primar" href="#kart">Åpne kartet</a>
+        </div>
+
+        <div class="kartboks" role="img" aria-label="Illustrasjon av kart over Vestfjella med rute, start, hytte og topp">
+          <span class="kart__linje" aria-hidden="true"></span>
+          <span class="kart__punkt kart__punkt--start" aria-hidden="true"></span>
+          <span class="kart__punkt kart__punkt--hytte" aria-hidden="true"></span>
+          <span class="kart__punkt kart__punkt--topp" aria-hidden="true"></span>
+          <span class="kart__etikett">Vestfjella</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logg inn -->
+    <section class="seksjon oppfordring" id="logg-inn" aria-labelledby="logg-inn-tittel">
+      <div class="innhold oppfordring__innhold">
+        <div>
+          <h2 id="logg-inn-tittel">Logg inn for å planlegge sammen</h2>
+          <p>
+            Med en gratis brukerkonto kan du melde deg på fellesturer, lagre favorittruter
+            og invitere turkamerater. Medlemmer av TiU får i tillegg rabatt på alle hytter.
+          </p>
+        </div>
+
+        <form class="innlogging" aria-label="Logg inn">
+          <label class="felt">
+            <span>E-post</span>
+            <input type="email" name="epost" placeholder="navn@eksempel.no">
+          </label>
+          <label class="felt">
+            <span>Passord</span>
+            <input type="password" name="passord" placeholder="Passord">
+          </label>
+          <button class="knapp knapp--primar knapp--bred" type="button">Logg inn</button>
+          <p class="innlogging__hjelp">
+            <a href="#logg-inn">Glemt passord?</a> · <a href="#logg-inn">Bli medlem</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bunn">
+    <div class="innhold bunn__grid">
+
+      <div class="bunn__merke">
+        <span class="logo logo--lys">
+          <span class="logo__merke" aria-hidden="true"></span>
+          <span class="logo__tekst">UT<span class="logo__prikk">.</span>ut</span>
+        </span>
+        <p>
+          UT.ut drives av Turistforeningen i Utopia (TiU), en medlemsorganisasjon
+          som merker stier, driver hytter og arrangerer fellesturer i hele Utopia.
+        </p>
+      </div>
+
+      <nav class="bunn__kolonne" aria-label="Utforsk">
+        <h2>Utforsk</h2>
+        <ul>
+          <li><a href="#turer">Turruter</a></li>
+          <li><a href="#hytter">Hytter</a></li>
+          <li><a href="#fellesturer">Fellesturer</a></li>
+          <li><a href="#kart">Kart</a></li>
+        </ul>
+      </nav>
+
+      <nav class="bunn__kolonne" aria-label="Om TiU">
+        <h2>Om TiU</h2>
+        <ul>
+          <li><a href="#logg-inn">Bli medlem</a></li>
+          <li><a href="#hero">Lokallag</a></li>
+          <li><a href="#hero">Bli turleder</a></li>
+          <li><a href="#hero">Dugnad og merking</a></li>
+        </ul>
+      </nav>
+
+      <div class="bunn__kolonne">
+        <h2>Kontakt</h2>
+        <address>
+          Turistforeningen i Utopia<br>
+          Storgata 1, 0001 Utopia by<br>
+          <a href="#hero">post@tiu.ut</a><br>
+          <a href="#hero">+47 00 00 00 00</a>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="innhold bunn__linje">
+      <p>© 2026 Turistforeningen i Utopia – en fiktiv organisasjon.</p>
+      <ul class="bunn__smalenker">
+        <li><a href="#hero">Personvern</a></li>
+        <li><a href="#hero">Tilgjengelighet</a></li>
+        <li><a href="#hero">Informasjonskapsler</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
