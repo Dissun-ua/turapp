@@ -1,0 +1,123 @@
+/* Basestiler */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background-color: #f5f7fa;
+}
+
+/* Toppbanner */
+.student-banner {
+    background-color: #1b4b8a;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Header og navigasjon */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dde3eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.6rem;
+    background: linear-gradient(135deg, #1b8a4b, #46c37b);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    color: #1b4b8a;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #263547;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: #e2efff;
+    color: #1b4b8a;
+}
+
+/* Hero-seksjon */
+.hero {
+    background: linear-gradient(135deg, #e5f4ff, #f4fff8);
+    padding: 2.5rem 1.25rem 2rem;
+}
+
+.hero-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.75rem;
+    color: #1b4b8a;
+}
+
+.hero-lead {
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    color: #2d3c4d;
+}
+
+.hero-sub {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #4b5a6b;
+}
+
+/* Søkef
