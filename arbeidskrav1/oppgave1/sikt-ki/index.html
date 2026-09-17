@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>UT.ut – Turportalen til Turistforeningen i Utopia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toppbanner -->
+    <div class="student-banner">
+        Studentoppgave ved USN
+    </div>
+
+    <!-- Sideheader -->
+    <header class="site-header">
+        <div class="logo">
+            <span class="logo-icon">UT</span>
+            <span class="logo-text">UT.ut</span>
+        </div>
+        <nav class="main-nav" aria-label="Hovednavigasjon">
+            <ul>
+                <li><a href="#turer">Turer</a></li>
+                <li><a href="#hytter">Hytter</a></li>
+                <li><a href="#fellesturer">Fellesturer</a></li>
+                <li><a href="#kart">Kart</a></li>
+                <li><a href="#login">Logg inn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero-seksjon -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">Oppdag Utopia – planlegg neste tur med UT.ut</h1>
+                <p class="hero-lead">
+                    UT.ut er Turistforeningen i Utopia (TiU) sin turportal. Finn turruter, hytter og
+                    fellesturer over hele Utopia, og planlegg turer sammen med andre turglade.
+                </p>
+
+                <form class="search-form" aria-label="Tur-søk (kun visuelt)">
+                    <label for="search-input" class="visually-hidden">Søk etter turer, hytter eller områder</label>
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Søk etter turrute, hytte eller område"
+                        aria-disabled="true"
+                    >
+                    <button type="button" aria-disabled="true">Søk</button>
+                </form>
+
+                <p class="hero-sub">
+                    Søkefeltet er kun visuelt i denne studentoppgaven – bruk menyen og filtrene under for å utforske innholdet.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filterseksjon -->
+        <section class="filters" aria-labelledby="filter-title">
+            <h2 id="filter-title">Filtrer turruter</h2>
+            <p class="filters-intro">
+                Begrens søket etter turer ved å velge vanskelighetsgrad, varighet og turtype.
+            </p>
+            <div class="filters-grid">
+                <article class="filter-card">
+                    <h3>Vanskelighetsgrad</h3>
+                    <ul>
+                        <li>Enkel – passer for alle</li>
+                        <li>Middels – krever litt erfaring</li>
+                        <li>Krevende – for erfarne turfolk</li>
+                        <li>Ekstra krevende – høyfjell og lange dagsetapper</li>
+                    </ul>
+                </article>
+
+                <article class="filter-card">
+                    <h3>Varighet</h3>
+                    <ul>
+                        <li>Kort tur – inntil 3 timer</li>
+                        <li>Dags tur – 3–8 timer</li>
+                        <li>Weekendtur – 2–3 dager</li>
+                        <li>Langtur – 4+ dager</li>
+                    </ul>
+                </article>
+
+                <article class="filter-card">
+                    <h3>Turtype</h3>
+                    <ul>
+                        <li>Fottur – merket sti og rundløyper</li>
+                        <li>Sykkeltur – grusveier og sykkelstier</li>
+                        <li>Skitur – preparerte løyper og toppturer</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Populære turruter -->
+        <section class="routes" id="turer" aria-labelledby="routes-title">
+            <h2 id="routes-title">Populære turruter</h2>
+            <p class="section-intro">
+                Her er noen av de mest populære turrutene i Utopia, valgt ut av TiU sine lokallag.
+            </p>
+            <div class="card-grid">
+                <article class="route-card">
+                    <h3>Fjellryggen rundt Utopiafjorden</h3>
+                    <p class="route-meta">
+                        Lengde: <strong>18 km</strong> · Vanskelighetsgrad: <strong>Middels</strong>
+                    </p>
+                    <p class="route-rating" aria-label="Vurdering: 4 av 5 stjerner">
+                        ★★★★☆
+                    </p>
+                    <p class="route-description">
+                        Rundtur med utsikt over Utopiafjorden og flere fine rastesteder. Passer godt som dagstur.
+                    </p>
+                </article>
+
+                <article class="route-card">
+                    <h3>Topptur til Høyeste Utopia</h3>
+                    <p class="route-meta">
+                        Lengde: <strong>12 km</strong> · Vanskelighetsgrad: <strong>Krevende</strong>
+                    </p>
+                    <p class="route-rating" aria-label="Vurdering: 5 av 5 stjerner">
+                        ★★★★★
+                    </p>
+                    <p class="route-description">
+                        Klassisk topptur med bratte partier og spektakulær utsikt. Anbefales i godt vær.
+                    </p>
+                </article>
+
+                <article class="route-card">
+                    <h3>Familietur langs Skogløypa</h3>
+                    <p class="route-meta">
+                        Lengde: <strong>6 km</strong> · Vanskelighetsgrad: <strong>Enkel</strong>
+                    </p>
+                    <p class="route-rating" aria-label="Vurdering: 4 av 5 stjerner">
+                        ★★★★☆
+                    </p>
+                    <p class="route-description">
+                        Barnevennlig runde i variert skogsterreng med gapahuk og bålplass underveis.
+                    </p>
+                </article>
+
+                <article class="route-card">
+                    <h3>Kyststi Utopia sør</h3>
+                    <p class="route-meta">
+                        Lengde: <strong>22 km</strong> · Vanskelighetsgrad: <strong>Middels</strong>
+                    </p>
+                    <p class="route-rating" aria-label="Vurdering: 4 av 5 stjerner">
+                        ★★★★☆
+                    </p>
+                    <p class="route-description">
+                        Lang, men relativt lett tur langs kysten med små strender og kulturlandskap.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Hytter -->
+        <section class="cabins" id="hytter" aria-labelledby="cabins-title">
+            <h2 id="cabins-title">Hytter i Utopia</h2>
+            <p class="section-intro">
+                TiU drifter både betjente og ubetjente hytter. Her er et utvalg du kan planlegge turen rundt.
+            </p>
+            <div class="card-grid cabins-grid">
+                <article class="cabin-card">
+                    <h3>Utopia Fjellstue</h3>
+                    <p class="cabin-type">
+                        Betjent hytte · Prisnivå: <strong>★★★</strong> (middels)
+                    </p>
+                    <ul class="cabin-features">
+                        <li>Servering av frokost og middag</li>
+                        <li>Fellesstue og tørkerom</li>
+                        <li>Familierom og sovesal</li>
+                    </ul>
+                </article>
+
+                <article class="cabin-card">
+                    <h3>Skogsro Ubetjent</h3>
+                    <p class="cabin-type">
+                        Ubetjent hytte · Prisnivå: <strong>★★</strong> (rimelig)
+                    </p>
+                    <ul class="cabin-features">
+                        <li>Enkel standard med gassbluss</li>
+                        <li>Vedovn og vedlager</li>
+                        <li>Sengeplasser med madrasser</li>
+                    </ul>
+                </article>
+
+                <article class="cabin-card">
+                    <h3>Havbris Kysthytte</h3>
+                    <p class="cabin-type">
+                        Delvis betjent · Prisnivå: <strong>★★★★</strong> (litt høyere)
+                    </p>
+                    <ul class="cabin-features">
+                        <li>Sommerbetjening med enkel servering</li>
+                        <li>Strand like ved hytta</li>
+                        <li>Solrik terrasse med utsikt</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Fellesturer -->
+        <section class="group-tours" id="fellesturer" aria-labelledby="group-tours-title">
+            <h2 id="group-tours-title">Kommende fellesturer</h2>
+            <p class="section-intro">
+                Fellesturer er en sosial måte å komme seg ut på tur. Nedenfor ser du turer med fast startdato,
+                og turer der startdatoen er fleksibel og avtales i gruppen.
+            </p>
+
+            <div class="group-tours-grid">
+                <section class="group-tours-fixed" aria-labelledby="fixed-title">
+                    <h3 id="fixed-title">Faste datoer</h3>
+                    <article class="tour-card tour-fixed">
+                        <h4>Helgetur til Utopia Fjellstue</h4>
+                        <p class="tour-date">Startdato: 14. oktober 2026</p>
+                        <p class="tour-info">
+                            Dagturer i fjellet med felles middag på fjellstua. Passer for deg som vil gå
+                            tur i rolig tempo og bli kjent med nye folk.
+                        </p>
+                    </article>
+
+                    <article class="tour-card tour-fixed">
+                        <h4>Kveldstur langs Skogløypa</h4>
+                        <p class="tour-date">Startdato: 22. oktober 2026</p>
+                        <p class="tour-info">
+                            Kort ettermiddagstur med fokus på lav terskel og hyggelig stemning. Ta med lykt i mørketiden.
+                        </p>
+                    </article>
+                </section>
+
+                <section class="group-tours-flex" aria-labelledby="flex-title">
+                    <h3 id="flex-title">Fleksible datoer</h3>
+                    <article class="tour-card tour-flex">
+                        <h4>Sykkelhelg langs Utopia-kysten</h4>
+                        <p class="tour-date">Fleksibel start · dato avtales i gruppen</p>
+                        <p class="tour-info">
+                            To–tre dager på sykkel langs kyststien. Deltakerne blir enige om endelig helg
+                            basert på værmelding og kapasitet.
+                        </p>
+                    </article>
+
+                    <article class="tour-card tour-flex">
+                        <h4>Topptur-uke til Høyeste Utopia</h4>
+                        <p class="tour-date">Fleksibel start · innen neste måned</p>
+                        <p class="tour-info">
+                            En gruppe som planlegger topptur på kort varsel når forholdene er best.
+                            Du melder interesse og blir med når det passer.
+                        </p>
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <!-- Kart-seksjon (placeholder) -->
+        <section class="map-section" id="kart" aria-labelledby="map-title">
+            <h2 id="map-title">Kart over turer og hytter</h2>
+            <p class="section-intro">
+                Her vil det i en fullversjon ligge et interaktivt kart. I denne studentoppgaven vises kun en
+                visuell plassholder.
+            </p>
+            <div class="map-placeholder" aria-label="Kartplassholder">
+                Kart kommer her
+            </div>
+        </section>
+
+        <!-- Logg inn-seksjon (placeholder) -->
+        <section class="login-section" id="login" aria-labelledby="login-title">
+            <h2 id="login-title">Logg inn på UT.ut</h2>
+            <p class="section-intro">
+                Innlogging brukes for å melde seg på fellesturer, lagre favoritt-turer og planlegge turer
+                sammen med venner. I denne studentoppgaven er innlogging kun illustrert visuelt.
+            </p>
+            <form class="login-form" aria-label="Innlogging (kun visuelt)">
+                <div class="form-row">
+                    <label for="login-email">E-post</label>
+                    <input type="email" id="login-email" placeholder="din.epost@eksempel.no" aria-disabled="true">
+                </div>
+                <div class="form-row">
+                    <label for="login-password">Passord</label>
+                    <input type="password" id="login-password" placeholder="••••••••" aria-disabled="true">
+                </div>
+                <button type="button" aria-disabled="true">Logg inn</button>
+                <p class="login-note">
+                    Denne innloggingen er ikke aktiv – funksjonalitet krever backend som ikke er del av oppgaven.
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <section class="footer-about" aria-labelledby="footer-about-title">
+                <h2 id="footer-about-title">Om Turistforeningen i Utopia (TiU)</h2>
+                <p>
+                    TiU er en fiktiv turistforening som arbeider for å få flere ut på tur i Utopia. Foreningen
+                    legger til rette for trygge og varierte naturopplevelser gjennom merking av stier, drift av
+                    hytter og organisering av fellesturer.
+                </p>
+            </section>
+
+            <section class="footer-links" aria-labelledby="footer-links-title">
+                <h2 id="footer-links-title">Nyttige lenker</h2>
+                <ul>
+                    <li><a href="#turer">Finn turruter</a></li>
+                    <li><a href="#hytter">Se hytter</a></li>
+                    <li><a href="#fellesturer">Meld deg på fellestur</a></li>
+                    <li><a href="#kart">Kart over Utopia</a></li>
+                    <li><a href="#login">Min side / innlogging</a></li>
+                </ul>
+            </section>
+
+            <section class="footer-meta" aria-labelledby="footer-meta-title">
+                <h2 id="footer-meta-title">Kontakt og info</h2>
+                <p>
+                    E-post: post@tiu.utopia<br>
+                    Telefon: +47 000 00 000<br>
+                    Adresse: Fiktivveien 1, 0000 Utopia
+                </p>
+                <p class="footer-note">
+                    UT.ut er utviklet som studentoppgave ved Universitetet i Sørøst-Norge (USN).
+                </p>
+            </section>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Turistforeningen i Utopia (TiU) · Nettstedet UT.ut er fiktivt og brukt i undervisning.</p>
+        </div>
+    </footer>
+</body>
+</html>
