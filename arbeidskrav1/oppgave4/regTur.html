@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Demo.js" defer></script> 
+    
+</head>
+<body>
+    <!--Registrering av tur/turmål-->
+    <h1>Turinformasjon </h1>
+    <form id ="turSkjema">
+        <h2>Navnet på turen: </h2>
+        <label for ="tnavn"> Skriv inn navnet her:</label><br>
+        <input type="text" id="tnavn" name = "tnavn"><br>
+        
+        <h2>Vanskelighetsgrad:</h2>
+        <!-- enkel, middels, krevende, ekstra krevende ( hentet fra UT.no)-->
+        <input type="checkbox" id="gradEnkel" value="gradEnkel">
+        <label> Enkel </label><br>
+        <input type="checkbox" id="gradMiddels" value="gradMiddels">
+        <label> Middels </label><br>
+        <input type="checkbox" id="gradEksKre" value="gradEksKre">
+        <label> Ekstra krevende </label><br>
+    
+        <!--turlengde info hentet fra UT.no-->
+        <h2>Turenslengde: </h2>
+        <input type="checkbox" id="kortTur" value="kortTur">
+        <label for="kortTur"> Korttur(1-2 timer)</label><br>
+        <input type="checkbox" id="halvTur" value="halvTur">
+        <label for="halvTur"> Halvdagstur(3-5 timer)</label><br>
+        <input type="checkbox" id="dagTur" value="dagTur">
+        <label for="dagTur"> Dagstur</label><br>
+        <input type="checkbox" id="helgTur" value="helgTur">
+        <label for="helgTur"> Helgetur (2-4 dager)</label><br>
+        <input type="checkbox" id="langTur" value="langTur">
+        <label for="langTur"> Langtur (5+ dager)</label><br>
+        
+        <h2>Type tur:</h2>
+        <select name="typetur" id="typetur"> <!-- HTML <select> Tag i w3schools. lager en dropdow liste med valgene som er laget-->
+            <option value="fottur">Fottur</option>
+            <option value="sykkeltur">Sykkeltur</option>
+            <option value="skitur">Skitur</option>
+        </select><br>
+     <br>
+    <input type="submit" id="submit" value="Legg til tur">
+    </form>
+   <p id="demo"></p>
+</body>
+</html>
