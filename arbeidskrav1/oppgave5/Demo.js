@@ -60,3 +60,5 @@ document.getElementById("turSkjema").addEventListener("submit", function(event) 
     }
 document.getElementById("demo").innerHTML = text;
 })};
+
+//hei jeg har nå jobbet med dette i 3 timer
